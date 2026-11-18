@@ -1,8 +1,7 @@
 ###
-### ~ Monica dev Dockerfile
+### ~ Project BlackBookd dev Dockerfile (FPM)
 ###
-### This file is used for dev purpose.
-### The standard monica image definition will be found here: https://github.com/monicahq/docker
+### Dev/CI builds for freqkflag/BlackBookd. Upstream: https://github.com/monicahq/docker
 ### This file is based on the `fpm` variant in the above mentioned repo
 ###
 

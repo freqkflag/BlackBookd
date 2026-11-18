@@ -1,1 +1,8 @@
 blank_issues_enabled: false
+contact_links:
+  - name: Documentation index
+    url: https://github.com/freqkflag/BlackBookd/blob/main/docs/README.md
+    about: BLACKBOOKD.md, API docs, and roadmap
+  - name: Security advisory
+    url: https://github.com/freqkflag/BlackBookd/security/advisories/new
+    about: Report vulnerabilities privately

@@ -1,8 +1,8 @@
 ###
-### ~ Monica dev Dockerfile
+### ~ Project BlackBookd dev Dockerfile
 ###
-### This file is used for dev purpose.
-### The standard monica image definition will be found here: https://github.com/monicahq/docker
+### This file is used for dev/CI builds of freqkflag/BlackBookd.
+### Upstream Monica image recipes: https://github.com/monicahq/docker
 ### This file is based on the `apache` variant in the above mentioned repo
 ###
 

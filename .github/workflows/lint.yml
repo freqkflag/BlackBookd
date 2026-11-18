@@ -1,4 +1,4 @@
-name: Lint files
+name: Lint (BlackBookd)
 
 on:
   pull_request:

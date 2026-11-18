@@ -1,186 +1,70 @@
-<p align="center">
+# Project BlackBookd
 
-![Monica’s Logo](https://user-images.githubusercontent.com/61099/242266547-63d98bd9-35f3-4dfe-92f4-a4a8dd75aa5c.png)
+**Self-hosted, privacy-first, 100% FOSS personal CRM** for queer and gay dating and kink life: connections, sexual health, encounters, and an API for your own assistant (**GayHook**).
 
-</p>
-<h1 align="center">Project BlackBookd</h1>
-<p align="center"><strong>Self-hosted personal CRM for relationships, health, and dating — built on Monica v5.</strong></p>
-<p align="center"><sub>Based on <a href="https://github.com/monicahq/monica">Monica</a> by monicahq (AGPL-3.0). Docs: <a href="docs/BLACKBOOKD.md">BLACKBOOKD.md</a> · <a href="docs/BLACKBOOKD-API.md">BLACKBOOKD-API.md</a> · <a href="https://github.com/freqkflag/BlackBookd">GitHub</a>.</sub></p>
+Project BlackBookd is **AGPL-3.0** software, **based on [Monica](https://github.com/monicahq/monica) by monicahq** (Laravel 12 / Inertia v5). This repository is the starting point toward a **ground-up FOSS rebuild**; the BlackBookd module layers dating, health, and privacy features on Monica’s vault/contact model without hosted paywalls or telemetry.
 
-<div align="center">
+- **Documentation:** [docs/README.md](docs/README.md) · [BLACKBOOKD.md](docs/BLACKBOOKD.md) · [BLACKBOOKD-API.md](docs/BLACKBOOKD-API.md) · [ROADMAP.md](docs/ROADMAP.md)
+- **Issues & security:** [GitHub Issues](https://github.com/freqkflag/BlackBookd/issues) · [Security advisories](https://github.com/freqkflag/BlackBookd/security/advisories)
 
-[![Docker pulls](https://img.shields.io/docker/pulls/library/monica)](https://hub.docker.com/_/monica/)
-![Lines of code](https://sloc.xyz/github/monicahq/monica/)
-[![Code coverage](https://img.shields.io/sonar/coverage/monica?server=https%3A%2F%2Fsonarcloud.io&style=flat-square&label=Coverage%20Status)](https://sonarcloud.io/project/activity?custom_metrics=coverage&graph=custom&id=monica)
-[![License](https://img.shields.io/github/license/monicahq/monica)](https://github.com/monicahq/monica/blob/main/LICENSE.md)
+---
 
-</div>
+## Who it’s for
 
-<p align="center">
-  <a href="https://github.com/freqkflag/BlackBookd/blob/main/docs/BLACKBOOKD.md">Docs</a>
-  -
-  <a href="https://github.com/freqkflag/BlackBookd/issues/new">Bug report</a>
-</p>
+Adults who want a **private, self-hosted** place to track dating and kink-related life: who you’re talking to, what stage things are in, encounters, per-contact sexual-health notes, your own test/PrEP/vaccine log, and optional blur on sensitive dashboard data—**on your server**, not a vendor’s.
 
-## Project BlackBookd is a self-hosted personal relationship management system, that lets you document your life.
+## Privacy stance
 
-> [!WARNING]
-> This branch is in development. It’s our beta version.
->
-> If you want to browse the stable and current version, see the [4.x branch](https://github.com/monicahq/monica/tree/4.x).
+- **Self-hosted:** you operate the instance; freqkflag does not run a SaaS for this fork.
+- **No paywalls by default** (`BLACKBOOKD_NO_PAYWALLS=true`): storage limits and upgrade prompts are disabled for self-hosting.
+- **No product telemetry** is added by this fork beyond what you configure (e.g. optional Sentry, email, maps).
+- **Do not commit personal data:** no real contacts, messages, or health details in the repo—use your own `.env` and database locally.
 
-## Table of contents
+## Features (implemented on this branch)
 
-- [Introduction](#introduction)
-  - [Features](#features)
-  - [Who is it for?](#who-is-it-for)
-  - [What Monica isn’t](#what-monica-isnt)
-- [Contribute](#contribute)
-  - [Contribute as a community](#contribute-as-a-community)
-  - [Contribute as a developer](#contribute-as-a-developer)
-- [Principles, vision, goals and strategy](#principles-vision-goals-and-strategy)
-  - [Principles](#principles)
-  - [Vision](#vision)
-  - [Goals](#goals)
-  - [Why Open Source?](#why-open-source)
-  - [Patreon](#patreon)
-- [Contact](#contact)
-- [Team](#team)
-- [Thank you, open source](#thank-you-open-source)
-- [License](#license)
+| Area | What you get |
+|------|----------------|
+| **Vaults & contacts** | Monica v5 PRM: vaults, templates, relationships, journal, reminders, documents, Sanctum API |
+| **BlackBookd module** (opt-in per account) | Encounters, per-contact sexual-health profile, owner health log (STI / PrEP / doxyPEP / vaccines + reminders) |
+| **Dating pipeline** | Per-contact handle, stage board, last message, next step, red flags, long-term fit; quiet list & weekly roundup API |
+| **Partner notification helper** | Contacts with encounters in a lookback window from a test date |
+| **Privacy** | Module disabled by default; optional dashboard blur |
+| **GayHook API** | REST under `/api/blackbookd/*` with Sanctum `read`/`write` tokens ([BLACKBOOKD-API.md](docs/BLACKBOOKD-API.md)) |
+| **Export** | JSON export of BlackBookd data |
 
-## Introduction
+### Planned (not in repo yet)
 
-Project BlackBookd is an open-source web application (forked from Monica) that enables you to document your life, organize, and log your interactions with your family and friends. We call it a PRM, or Personal Relationship Management. Imagine a CRM—a commonly used tool by sales teams in the corporate world—for your friends and family.
+- Drag-and-drop pipeline board UI
+- Inline BlackBookd fields on contact templates/modules
+- Full i18n pass beyond inherited Monica locales
+- DAV/CardDAV or SQL export extensions for pipeline fields
+- Ground-up FOSS app (long-term; see [ROADMAP.md](docs/ROADMAP.md))
 
-### Features
+## Quick start (Docker dev image)
 
-- Add and manage contacts
-- Define relationships between contacts
-- Reminders
-- Automatic reminders for birthdays
-- Ability to add notes to a contact
-- Ability to record how you met someone
-- Management of activities with a contact
-- Management of tasks
-- Management of addresses and all the different ways to contact someone
-- Management of contact field types
-- Management of a contact’s pets
-- Top of the art diary to keep track of what’s happening in your life
-- Ability to record how your day went
-- Upload documents and photos
-- Ability to define custom genders
-- Ability to define custom activity types
-- Ability to favorite contacts
-- Multiple vaults and users
-- Labels to organize contacts
-- Ability to define what section should appear on the contact sheet
-- Multiple currencies
-- Translated in 27 languages
+```bash
+git clone https://github.com/freqkflag/BlackBookd.git
+cd BlackBookd
+cp .env.example .env
+# Set APP_KEY, DB_*, etc. — never commit real secrets or personal exports.
 
-### Who is it for?
+docker build -f scripts/docker/Dockerfile -t blackbookd:local .
+docker run --rm -p 8080:80 --env-file .env blackbookd:local
+```
 
-This project is for people who want to document their lives and those who have difficulty remembering details about the lives of people they care about.
+Or use npm helpers (same Dockerfile):
 
-We’ve also had a lot of positive reviews from people with Asperger syndrome, Alzheimer’s disease, and introverts who use our app every day.
+```bash
+npm run docker:build
+npm run docker:run
+```
 
-### What Monica isn’t
+For local PHP development, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-- Monica is not a social network and **it never will be**. It’s not meant to be social. It’s designed to be the opposite: it’s for your eyes only.
-- Monica is not a smart assistant. It won’t guess what you want to do. It’s actually pretty dumb: it will only send you emails for the things you asked to be reminded of.
-- Monica does not have built-in AI with integrations like ChatGPT.
-- Monica is not a tool that will scan your data and do nasty things with it. It’s your data, your server, do whatever you want with it. You’re in control of your data.
+Enable BlackBookd in **Settings → BlackBookd** after login, then use the vault **BlackBookd** tab and the API docs.
 
-## Contribute
+## License & attribution
 
-Do you want to lend a hand? That’s great! We accept contributions from everyone, regardless of form.
+This project is licensed under **AGPL-3.0-or-later** (see [LICENSE.md](LICENSE.md)).
 
-Here are some of the things you can do to help.
-
-### Contribute as a community
-
-- Unlike Fight Club, the best way to help is **to actually talk about Monica** as much as you can in blog posts and articles, or on social media.
-- You can answer questions in [the issue tracker](https://github.com/monicahq/monica/issues) to help other community members.
-- You can financially support Monica’s development [on Patreon](https://www.patreon.com/monicahq) or by subscribing to [a paid account](https://monicahq.com/pricing).
-
-### Contribute as a developer
-
-- Read our [Contribution Guide](https://docs.monicahq.com/developers/contribution-guide).
-- Install [the developer version locally](https://docs.monicahq.com/developers/setup-local-development) so you can start contributing.
-- Look for [issues labelled ‘Bugs’](https://github.com/monicahq/monica/issues?q=is%3Aopen+is%3Aissue+label%3Abug) if you are looking to have an immediate impact on Monica.
-- Look for [issues labelled ‘Help Wanted’](https://github.com/monicahq/monica/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22). These are issues that you can solve relatively easily.
-- Look for [issues labelled ’Good First Issue’](https://github.com/monicahq/monica/labels/good%20first%20issue). These issues are for people who want to contribute, but try to work on a small feature first.
-- If you are an advanced developer, you can try to tackle [issues labelled ‘Feature Requests’](https://github.com/monicahq/monica/issues?q=is%3Aopen+is%3Aissue+label%3A%22feature+request%22). These are harder to do and will require a lot of back-and-forth with the repository administrator to make sure we are going to the right direction with the product.
-
-## Principles, vision, goals and strategy
-
-We want to use technology in a way that does not harm human relationships, unlike big social networks.
-
-### Principles
-
-Monica has a few principles.
-
-- It should help improve relationships.
-- It should be simple to use, simple to contribute to, simple to understand, extremely simple to maintain.
-- It is not a social network and never will be.
-- It is not and never will be ad-supported.
-- Users are not and never will be tracked.
-- It should be transparent.
-- It should be open-source.
-- It should do one thing (documenting your life) extremely well, and nothing more.
-- It should be well documented.
-
-### Vision
-
-Monica’s vision is to **help people have more meaningful relationships**.
-
-### Goals
-
-We want to provide a platform that is:
-
-- **really easy to use**: we value simplicity over anything else.
-- **open-source**: we believe everyone should be able to contribute to this tool, and see for themselves that nothing nasty is done behind the scenes that would go against the best interests of the users. We also want to leverage the community to build attractive features and do things that would not be possible otherwise.
-- **easy to contribute to**: we want to keep the codebase as simple as possible. This has two big advantages: anyone can contribute, and it’s easily maintainable on the long run.
-- **available everywhere**: Monica should be able to run on any desktop OS or mobile phone easily. This will be made possible by making sure the tool is easily installable by anyone who wants to either contribute or host the platform themselves.
-
-### Why Open Source?
-
-Why is Monica open source? Is it risky? Could someone steal my code and use it to start a for-profit business that could hurt my own? Why reveal our strategy to the world? We’ve already received these kinds of questions in our emails.
-
-The answer is simple: yes, you can fork Monica and create a competing project, make money from it (even if the license is not ideal for that) and we won’t be aware. But that’s okay, we don’t mind.
-
-We wanted to open source Monica for several reasons:
-
-- **We believe that this tool can really change people’s lives.**
-  We aim to make money from this project, but also want everyone to benefit. Open sourcing it will help Monica become much bigger than we imagine. We believe the software should follow our vision, but we must be humble enough to recognize that ideas come from everywhere and people may have better ideas than us.
-- **You can’t make something great alone.**
-  While Monica could become a company and hire a bunch of super smart people to work on it, you can’t beat the manpower of an entire community. Open sourcing the product means bugs will be fixed faster, features will be developed faster, and more importantly, developers will be able to contribute to a tool that positively changes their own lives and the lives of other people.
-- **Doing things in a transparent way leads to formidable things.**
-  People respect the project more when they can see how it’s being worked on. You can’t hide nasty things in the code. You can’t do things behind the backs of your users. Doing everything in the open is a major driving force that motivates you to keep doing what’s right.
-- **Once you’ve created a community of passionate developers around your project, you’ve won.**
-  Developers are powerful influencers: they create apps, discuss your product on forums, and share it with their networks. Nurture your relationship with developers – users will follow.
-
-### Patreon
-
-You can support the development of Monica [on Patreon](https://www.patreon.com/monicahq). Thanks for your help.
-
-## Contact
-
-## Team
-
-Our team is made of two core members:
-
-- [Regis (djaiss)](https://github.com/djaiss)
-- [Alexis Saettler (asbiin)](https://github.com/asbiin)
-
-We are also fortunate to have an amazing [community of developers](https://github.com/monicahq/monica/graphs/contributors) who help us greatly.
-
-## Thank you, open source
-
-Monica makes use of numerous open-source projects and we are deeply grateful. We hope that by offering Monica as a free, open-source project, we can help others in the same way these programs have helped us.
-
-## License
-
-Copyright © 2016–2023
-
-Licensed under [the AGPL License](/LICENSE.md).
+**Based on Monica by [monicahq](https://github.com/monicahq/monica), AGPL-3.0.** We thank the Monica community for the foundation. Project BlackBookd is maintained by [freqkflag/BlackBookd](https://github.com/freqkflag/BlackBookd); upstream Monica hosting, Patreon, and commercial services are unrelated to this fork.

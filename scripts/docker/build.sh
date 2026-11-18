@@ -24,7 +24,7 @@ else
 fi
 
 if [ -z "$tag" ]; then
-  tag=${1:-monica-dev}
+  tag=${1:-blackbookd-dev}
 fi
 
 echo Version

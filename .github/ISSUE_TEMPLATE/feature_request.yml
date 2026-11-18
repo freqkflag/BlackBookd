@@ -1,0 +1,45 @@
+name: Feature request
+description: Suggest an improvement for Project BlackBookd
+title: "[feature]: "
+labels: ["feature request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        See [docs/ROADMAP.md](../blob/main/docs/ROADMAP.md) for known planned work. **No personal data** in issues.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Agreement
+      options:
+        - label: I agree to follow the [Code of Conduct](../blob/main/CODE_OF_CONDUCT.md).
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: What are you trying to do for dating/kink/health tracking or GayHook automation?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How would you like it to work?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - BlackBookd module (encounters, health, pipeline)
+        - GayHook / API
+        - Privacy / self-host defaults
+        - Core Monica / vault behavior
+        - Docs / packaging / CI
+        - Ground-up FOSS rebuild (long term)

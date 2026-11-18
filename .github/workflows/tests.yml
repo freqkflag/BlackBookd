@@ -1,4 +1,4 @@
-name: Build and test
+name: Build and test (BlackBookd)
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
       connections: "['sqlite', 'mysql', 'pgsql']"
       default-php-version: '8.3'
       default-connection: sqlite
-      project: monica
+      project: blackbookd
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 

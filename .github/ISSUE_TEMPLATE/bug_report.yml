@@ -1,108 +1,57 @@
 name: Bug report
-description: Create a report to help us improve
-labels: ['bug']
+description: Something is broken in Project BlackBookd
+title: "[bug]: "
+labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        ### 👍 Thank you for your bug report — we love squashing them!
-        Please note this is a **free and open-source** project. We take our own time to help you, so please, be patient.
+        Thanks for reporting a bug. **Do not include real contacts, health data, or secrets** in this form.
+
   - type: checkboxes
-    id: check
+    id: terms
     attributes:
-      label: '⚠️ This issue respects the following points: ⚠️'
-      description: All conditions are **required**. Your issue can be closed if these are checked incorrectly.
+      label: Agreement
       options:
-        - label: This is a **bug**, not a question or a configuration/webserver/proxy issue.
+        - label: I agree to follow the [Code of Conduct](../blob/main/CODE_OF_CONDUCT.md).
           required: true
-        - label: This issue is **not** already reported on [Github](https://github.com/monicahq/monica/issues?q=is%3Aopen+is%3Aissue+label%3Abug) _(I've searched it)_.
+        - label: I searched [existing issues](https://github.com/freqkflag/BlackBookd/issues) and did not find a duplicate.
           required: true
-        - label: I agree to follow Monica's [Code of Conduct](https://github.com/monicahq/monica/blob/main/CODE_OF_CONDUCT.md).
-          required: true
-  - type: input
+
+  - type: textarea
     id: description
     attributes:
-      label: Bug description
-      description: |
-        Please describe the bug you are experiencing.
+      label: What happened?
+      description: What did you expect, and what actually happened?
+      placeholder: Clear steps to reproduce…
     validations:
       required: true
-  - type: textarea
-    id: reproduce
-    attributes:
-      label: Steps to reproduce
-      description: |
-        How do you trigger this bug? Please walk us through it step by step.
-      value: |
-        1.
-        2.
-        3.
-        ...
-    validations:
-      required: true
-  - type: textarea
-    id: expected
-    attributes:
-      label: Expected behavior
-      description: Describe what you expected to happen instead.
-    validations:
-      required: true
-  - type: dropdown
-    id: environment
-    attributes:
-      label: Environment
-      description: Environment or version where the bug happens.
-      options:
-        - app.monicahq.com (monica v4)
-        - beta.monicahq.com (v5 a.k.a chandler version or main branch)
-        - Your own self-hosted instance (monica v4)
-        - Your own self-hosted instance (v5 a.k.a chandler version or main branch)
-    validations:
-      required: true
+
   - type: input
     id: version
     attributes:
-      label: Version of Monica
-      description: |
-        Monica's semver version or commit number.
+      label: Version
+      description: Git commit, tag, or branch (e.g. `main`, `cursor/mature-crm-mvp-3567`).
+      placeholder: commit SHA or branch name
+
   - type: dropdown
-    id: install-method
+    id: hosting
     attributes:
-      label: Installation method
-      description: |
-        Select installation method you've used.
-        _Describe the method in the "Additional info" section if you chose "Other"._
+      label: How are you running BlackBookd?
       options:
-        - Manual installation with Archive
-        - Docker image
-        - Other
-  - type: dropdown
-    id: webserver
-    attributes:
-      label: Web server
-      description: |
-        Select Webserver serving Monica Server.
-        _Describe in the "Additional info" section if you chose "Other"._
-      options:
-        - Apache
-        - Nginx
-        - Other
-  - type: dropdown
-    id: database
-    attributes:
-      label: Database engine version
-      description: |
-        Select Database engine serving Monica Server.
-        _Describe in the "Additional info" section if you chose "Other"._
-      options:
-        - MySQL
-        - MariaDB
-        - PostgreSQL
-        - SQlite
-        - Other
+        - Self-hosted Docker (in-repo Dockerfile)
+        - Self-hosted PHP + npm dev setup
+        - Other (describe in details)
+
   - type: textarea
-    id: additional-info
+    id: environment
     attributes:
-      label: Additional info
-      description: |
-        Please add any other information related to the bug: screenshots, links, any context that can speed-up resolution.
+      label: Environment
+      description: PHP version, database engine, browser (if UI). **No `.env` secrets.**
+      placeholder: PHP 8.3, SQLite, Firefox …
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Sanitized Laravel log excerpts or console errors only.

@@ -292,15 +292,6 @@ const destroy = () => {
                 </p>
               </div>
 
-              <!-- not enough storage -->
-              <div
-                v-if="!data.canUploadFile"
-                class="mb-6 rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
-                <p class="bg-gray-100 p-3 text-center">
-                  <span class="me-1">⚠️</span>
-                  {{ $t('You don’t have enough space left in your account.') }}
-                </p>
-              </div>
             </div>
 
             <!-- post body -->

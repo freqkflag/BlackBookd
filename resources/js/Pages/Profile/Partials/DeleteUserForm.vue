@@ -61,7 +61,6 @@ const closeModal = () => {
 
         <p class="pt-5">{{ $t('This will immediately:') }}</p>
         <ul class="mb-2 ms-5">
-          <li>- {{ $t('Cancel all your active subscriptions') }},</li>
           <li>- {{ $t('Delete your account on https://customers.monicahq.com.') }}</li>
         </ul>
 

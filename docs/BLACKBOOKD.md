@@ -2,6 +2,22 @@
 
 BlackBookd is a self-hosted fork of [Monica](https://github.com/monicahq/monica) v5 (Laravel 12, Inertia) for a single queer adult user and the **GayHook** agent. It keeps Monica’s vault/contact architecture and AGPL-3.0 lineage; private relationship/health/dating data lives in an opt-in module behind `accounts.blackbookd_enabled`.
 
+## No paywalls
+
+BlackBookd is self-hosted only. Monica v5 on `main` does not ship Stripe/Cashier in-tree; the inherited SaaS-style gates are **storage quotas** and **upgrade/hosted messaging**.
+
+| Gate | Monica behavior | BlackBookd change |
+|------|-----------------|-------------------|
+| `StorageHelper::canUploadFile` | Blocks uploads when account over `storage_limit_in_mb` | Always allows when `BLACKBOOKD_NO_PAYWALLS=true` (default) via `PaywallHelper` |
+| New accounts | Default 50MB (`DEFAULT_STORAGE_LIMIT`) | Default **unlimited** (`0` MB cap) |
+| Existing accounts | May have 50MB cap | Migration sets `storage_limit_in_mb = 0` when no-paywalls enabled |
+| Settings → Storage UI | Shows cap + usage % | Shows **Unlimited**; no “please upgrade” copy |
+| Contact/journal uploads | Warning banners when full | Upgrade/limit banners **removed** |
+| Login hosted notice | `APP_SHOW_DELETION_NOTICE` | Forced off when no paywalls |
+| Profile delete copy | Mentions canceling subscriptions | Subscription bullet removed (self-host) |
+
+Toggle: `BLACKBOOKD_NO_PAYWALLS=false` in `.env` restores Monica-style storage enforcement for testing.
+
 ## Architecture fit
 
 | Layer | Approach |

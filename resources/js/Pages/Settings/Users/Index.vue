@@ -149,7 +149,7 @@
                     <span class="ms-4 font-normal text-gray-500">
                       {{
                         $t(
-                          'Can do everything, including adding or removing other users, managing billing and closing the account.',
+                          'Can do everything, including adding or removing other users and closing the account.',
                         )
                       }}
                     </span>

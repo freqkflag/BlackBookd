@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\PaywallHelper;
 use App\Helpers\SignupHelper;
 use App\Helpers\WallpaperHelper;
 use App\Http\Controllers\Controller;
@@ -43,7 +44,9 @@ class LoginController extends Controller
             'wallpaperUrl' => WallpaperHelper::getRandomWallpaper(),
             'providers' => $providers,
             'beta' => $request->cookie('beta') !== 'false',
-            'showDeletionNotice' => (bool) config('monica.show_deletion_notice'),
+            'showDeletionNotice' => PaywallHelper::noPaywalls()
+                ? false
+                : (bool) config('monica.show_deletion_notice'),
         ]);
     }
 

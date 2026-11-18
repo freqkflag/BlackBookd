@@ -14,6 +14,10 @@ class StorageHelper
      */
     public static function canUploadFile(Account $account): bool
     {
+        if (PaywallHelper::storageIsUnlimited($account)) {
+            return true;
+        }
+
         // if storage limit is 0 then unlimited storage is allowed
         // therefore the function should always return true
         if ($account->storage_limit_in_mb == 0) {

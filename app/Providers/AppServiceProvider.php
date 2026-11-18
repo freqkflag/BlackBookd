@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Domains\Contact\ManageDocuments\Events\FileDeleted;
 use App\Domains\Contact\ManageDocuments\Listeners\DeleteFileInStorage;
 use App\Helpers\CollectionHelper;
+use App\Helpers\PaywallHelper;
 use App\Http\Controllers\Profile\WebauthnDestroyResponse;
 use App\Http\Controllers\Profile\WebauthnUpdateResponse;
 use App\Models\User;
@@ -129,6 +130,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (PaywallHelper::noPaywalls()) {
+            Config::set('monica.default_storage_limit_in_mb', 0);
+            Config::set('monica.show_deletion_notice', false);
+        }
+
         if (Config::get('app.force_url') === true) {
             URL::forceRootUrl(Str::of(config('app.url'))->ltrim('/'));
             URL::forceScheme('https');

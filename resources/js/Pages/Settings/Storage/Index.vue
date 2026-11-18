@@ -61,7 +61,7 @@
         <div class="border border-gray-200 dark:border-gray-700 rounded-lg grid grid-cols-2 mb-8">
           <!-- account limit -->
           <div class="flex justify-between p-3 border-e border-gray-200 dark:border-gray-700">
-            <p>{{ $t('Your account limits') }}</p>
+            <p>{{ data.storage_unlimited ? 'Storage cap' : $t('Your account limits') }}</p>
             <p class="font-bold">
               {{ data.account_limit }}
             </p>
@@ -71,7 +71,12 @@
           <div class="flex justify-between p-3">
             <p>{{ $t('Your account current usage') }}</p>
             <p class="font-bold">
-              {{ data.statistics.total }} <span class="text-gray-500 font-normal text-sm">({{ data.statistics.total_percent }}%)</span>
+              {{ data.statistics.total }}
+              <span
+                v-if="data.statistics.total_percent !== null"
+                class="text-gray-500 font-normal text-sm">
+                ({{ data.statistics.total_percent }}%)
+              </span>
             </p>
           </div>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Domains\Settings\ManageStorage\Web\ViewHelpers;
 
 use App\Helpers\FileHelper;
+use App\Helpers\PaywallHelper;
 use App\Models\Account;
 use App\Models\File;
 
@@ -38,12 +39,16 @@ class StorageIndexViewHelper
             ->where('type', File::TYPE_AVATAR)
             ->count();
 
-        $accountLimit = $account->storage_limit_in_mb * 1024 * 1024;
+        $unlimited = PaywallHelper::storageIsUnlimited($account);
+        $accountLimitBytes = $unlimited ? 0 : $account->storage_limit_in_mb * 1024 * 1024;
 
         return [
+            'storage_unlimited' => $unlimited,
             'statistics' => [
                 'total' => FileHelper::formatFileSize($totalSizeInBytes),
-                'total_percent' => $accountLimit > 0 ? round($totalSizeInBytes * 100 / $accountLimit, 0) : 0,
+                'total_percent' => (! $unlimited && $accountLimitBytes > 0)
+                    ? round($totalSizeInBytes * 100 / $accountLimitBytes, 0)
+                    : null,
                 'photo' => [
                     'total' => $totalNumberOfPhotos,
                     'total_percent' => $totalSizeInBytes > 0 ? round($totalSizePhotosInBytes * 100 / $totalSizeInBytes, 0) : 0,
@@ -60,7 +65,7 @@ class StorageIndexViewHelper
                     'size' => FileHelper::formatFileSize($totalSizeAvatarInBytes),
                 ],
             ],
-            'account_limit' => FileHelper::formatFileSize($accountLimit),
+            'account_limit' => $unlimited ? 'Unlimited' : FileHelper::formatFileSize($accountLimitBytes),
             'url' => [
                 'settings' => [
                     'index' => route('settings.index'),

@@ -18,6 +18,8 @@ class StorageIndexViewHelperTest extends TestCase
     /** @test */
     public function it_gets_the_data_needed_for_the_view(): void
     {
+        config(['blackbookd.no_paywalls' => false]);
+
         $account = Account::factory()->create([
             'storage_limit_in_mb' => 1,
         ]);
@@ -42,6 +44,7 @@ class StorageIndexViewHelperTest extends TestCase
 
         $this->assertEquals(
             [
+                'storage_unlimited' => false,
                 'statistics' => [
                     'total' => '3MB',
                     'total_percent' => 300,
@@ -70,5 +73,21 @@ class StorageIndexViewHelperTest extends TestCase
             ],
             StorageIndexViewHelper::data($account)
         );
+    }
+
+    /** @test */
+    public function it_shows_unlimited_storage_when_no_paywalls(): void
+    {
+        config(['blackbookd.no_paywalls' => true]);
+
+        $account = Account::factory()->create([
+            'storage_limit_in_mb' => 1,
+        ]);
+
+        $data = StorageIndexViewHelper::data($account);
+
+        $this->assertTrue($data['storage_unlimited']);
+        $this->assertSame('Unlimited', $data['account_limit']);
+        $this->assertNull($data['statistics']['total_percent']);
     }
 }

@@ -16,6 +16,8 @@ class StorageHelperTest extends TestCase
     /** @test */
     public function it_checks_if_we_can_upload_another_file_in_the_account(): void
     {
+        config(['blackbookd.no_paywalls' => false]);
+
         $account = Account::factory()->create([
             'storage_limit_in_mb' => 1,
         ]);

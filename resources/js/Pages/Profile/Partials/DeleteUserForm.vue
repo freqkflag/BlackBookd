@@ -63,10 +63,6 @@ const closeModal = () => {
         <ul class="mb-2 ms-5">
           <li>- {{ $t('Delete your account on https://customers.monicahq.com.') }}</li>
         </ul>
-
-        <p class="font-semibold text-red-500">
-          {{ $t('You WILL still have to delete your account on Monica or OfficeLife.') }}
-        </p>
       </div>
 
       <div class="mt-5">

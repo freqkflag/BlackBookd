@@ -23,7 +23,7 @@ const submit = () => {
     <main class="mx-auto max-w-lg px-4 py-8 sm:mt-20">
       <h1 class="mb-2 text-xl font-semibold">BlackBookd module</h1>
       <p class="mb-6 text-sm text-gray-500">
-        Private relationship, health, and dating data for this account. Hidden until enabled. GayHook uses the REST API with the same Sanctum tokens as Monica.
+        Private relationship, health, and dating data for this account. Hidden until enabled. GayHook uses the REST API with the same Sanctum tokens as the rest of Project BlackBookd.
       </p>
       <form class="space-y-4 rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-700 dark:bg-gray-900" @submit.prevent="submit">
         <label class="flex items-center gap-2 text-sm">

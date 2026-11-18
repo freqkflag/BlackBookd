@@ -69,8 +69,9 @@
           <div>
             <p class="mb-1">Modules contain each one of your contact's data.</p>
             <p class="mb-1">
-              Monica comes with a set of predefined modules that can't be edited or deleted – because we need them for
-              Monica to function properly. However, you can create your own modules to record the data you want in your
+              Project BlackBookd comes with a set of predefined modules that can't be edited or deleted – because we need
+              them for the app to function properly. However, you can create your own modules to record the data you
+              want in your
               account.
             </p>
           </div>

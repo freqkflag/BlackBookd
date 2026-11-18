@@ -128,7 +128,7 @@ return [
     |
     */
 
-    'help_center_url' => 'https://docs.monicahq.com/',
+    'help_center_url' => 'https://github.com/freqkflag/BlackBookd/blob/main/docs/BLACKBOOKD.md',
 
     /*
     |--------------------------------------------------------------------------
@@ -139,7 +139,7 @@ return [
     |
     */
 
-    'repository' => 'https://github.com/monicahq/monica/',
+    'repository' => 'https://github.com/freqkflag/BlackBookd',
 
     /*
     |--------------------------------------------------------------------------

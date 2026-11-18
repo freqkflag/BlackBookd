@@ -3,9 +3,9 @@
 ![Monica’s Logo](https://user-images.githubusercontent.com/61099/242266547-63d98bd9-35f3-4dfe-92f4-a4a8dd75aa5c.png)
 
 </p>
-<h1 align="center">BlackBookd</h1>
+<h1 align="center">Project BlackBookd</h1>
 <p align="center"><strong>Self-hosted personal CRM for relationships, health, and dating — built on Monica v5.</strong></p>
-<p align="center"><sub>BlackBookd is a fork of <a href="https://github.com/monicahq/monica">Monica</a> (AGPL-3.0). See <a href="docs/BLACKBOOKD.md">docs/BLACKBOOKD.md</a> and <a href="docs/BLACKBOOKD-API.md">docs/BLACKBOOKD-API.md</a>.</sub></p>
+<p align="center"><sub>Based on <a href="https://github.com/monicahq/monica">Monica</a> by monicahq (AGPL-3.0). Docs: <a href="docs/BLACKBOOKD.md">BLACKBOOKD.md</a> · <a href="docs/BLACKBOOKD-API.md">BLACKBOOKD-API.md</a> · <a href="https://github.com/freqkflag/BlackBookd">GitHub</a>.</sub></p>
 
 <div align="center">
 
@@ -17,12 +17,12 @@
 </div>
 
 <p align="center">
-  <a href="https://docs.monicahq.com">Docs</a>
+  <a href="https://github.com/freqkflag/BlackBookd/blob/main/docs/BLACKBOOKD.md">Docs</a>
   -
-  <a href="https://github.com/monicahq/monica/issues/new?assignees=&amp;labels=bug&amp;template=bug_report.md">Bug report</a>
+  <a href="https://github.com/freqkflag/BlackBookd/issues/new">Bug report</a>
 </p>
 
-## Monica is an open source personal relationship management system, that lets you document your life.
+## Project BlackBookd is a self-hosted personal relationship management system, that lets you document your life.
 
 > [!WARNING]
 > This branch is in development. It’s our beta version.
@@ -51,7 +51,7 @@
 
 ## Introduction
 
-Monica is an open-source web application that enables you to document your life, organize, and log your interactions with your family and friends. We call it a PRM, or Personal Relationship Management. Imagine a CRM—a commonly used tool by sales teams in the corporate world—for your friends and family.
+Project BlackBookd is an open-source web application (forked from Monica) that enables you to document your life, organize, and log your interactions with your family and friends. We call it a PRM, or Personal Relationship Management. Imagine a CRM—a commonly used tool by sales teams in the corporate world—for your friends and family.
 
 ### Features
 

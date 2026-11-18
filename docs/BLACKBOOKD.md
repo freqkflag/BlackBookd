@@ -1,6 +1,6 @@
 # BlackBookd product plan
 
-BlackBookd is a self-hosted fork of [Monica](https://github.com/monicahq/monica) v5 (Laravel 12, Inertia) for a single queer adult user and the **GayHook** agent. It keeps Monica’s vault/contact architecture and AGPL-3.0 lineage; private relationship/health/dating data lives in an opt-in module behind `accounts.blackbookd_enabled`.
+**Project BlackBookd** is a self-hosted fork of [Monica](https://github.com/monicahq/monica) by monicahq v5 (Laravel 12, Inertia) for a single queer adult user and the **GayHook** agent. It keeps Monica’s vault/contact architecture and AGPL-3.0 lineage; private relationship/health/dating data lives in an opt-in module behind `accounts.blackbookd_enabled`.
 
 ## No paywalls
 

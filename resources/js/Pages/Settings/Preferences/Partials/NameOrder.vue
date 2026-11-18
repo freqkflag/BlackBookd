@@ -38,7 +38,7 @@ const helpDocumentation = () => {
   let msg = trans(
     'Please read our <link>documentation</link> to know more about this feature, and which variables you have access to.',
   );
-  let link = 'https://docs.monicahq.com/user-and-account-settings/manage-preferences#customize-contact-names';
+  let link = 'https://github.com/freqkflag/BlackBookd/blob/main/docs/BLACKBOOKD.md';
 
   return msg
     .replace(

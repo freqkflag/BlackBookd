@@ -1,6 +1,6 @@
 # BlackBookd REST API
 
-Authentication matches Monica v5: **Laravel Sanctum** personal access tokens with `read` and/or `write` abilities. Base URL: `https://your-host/api`.
+Authentication matches Project BlackBookd / Monica v5: **Laravel Sanctum** personal access tokens with `read` and/or `write` abilities. Base URL: `https://your-host/api`.
 
 Enable the module first (`PUT /api/blackbookd/settings`). All vault routes return **403** when `blackbookd_enabled` is false.
 

@@ -1,7 +1,7 @@
 {
   "name": "monicahq/monica",
   "type": "project",
-  "description": "BlackBookd — self-hosted personal CRM fork of Monica.",
+    "description": "Project BlackBookd — self-hosted personal CRM fork of Monica (AGPL-3.0).",
   "keywords": [
     "laravel",
     "crm",
